@@ -19,7 +19,7 @@ function App() {
   const fetchData = () => {
     if (!navigator.onLine) return; // Don't fetch if offline
 
-    fetch('http://127.0.0.1:8000/api/inventory')
+    fetch('https://bloodlink-africa.onrender.com/api/inventory')
       .then(response => response.json())
       .then(data => {
         setInventory(Array.isArray(data.inventory) ? data.inventory : [])
@@ -31,7 +31,7 @@ function App() {
         setLoading(false)
       })
 
-    fetch('http://127.0.0.1:8000/api/forecast')
+    fetch('https://bloodlink-africa.onrender.com/api/forecast')
       .then(response => response.json())
       .then(data => {
         if (data.forecast && data.forecast.length > 0) setForecast(data.forecast)
@@ -49,7 +49,7 @@ function App() {
 
     for (const request of queue) {
       try {
-        await fetch('http://127.0.0.1:8000/api/smart-request', {
+        await fetch('https://bloodlink-africa.onrender.com/api/smart-request', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(request)
@@ -112,7 +112,7 @@ function App() {
 
     // 🌐 ONLINE LOGIC
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/smart-request', {
+      const response = await fetch('https://bloodlink-africa.onrender.com/api/smart-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(requestData)
